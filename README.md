@@ -11,7 +11,7 @@ Roman Teterevlev
 ```sql
 select ROUND(SUM(index_length)*100/SUM(data_length)) 'size index in %' from INFORMATION_SCHEMA.TABLES
 ```
-
+![alt text](https://github.com/Roman-Teterevlev/SYS-21_12-05/blob/main/12-05_1.png)
 
 ### Задание 2
 
@@ -27,9 +27,10 @@ where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and
 ### Ответ:
 
 При текущем запросе результат:
-
+![alt text](https://github.com/Roman-Teterevlev/SYS-21_12-05/blob/main/12-05_2.1.png)
 
 Столбец f.title, таблицы film и inventory в функции увеличивают время обработки запроса.
+
 Добавим индекс:
 ```
 CREATE index payment_date on payment(payment_date);
@@ -43,4 +44,4 @@ inner join customer c on c.customer_id = r.customer_id
 where p.payment_date between '2005-07-30 00:00:00' and '2005-07-30 23:59:59'
 group by c.last_name, c.first_name, c.customer_id
 ```
-
+![alt text](https://github.com/Roman-Teterevlev/SYS-21_12-05/blob/main/12-05_2.2.png)
